@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_demo/provider/counter_model.dart';
 import 'package:provider_demo/tab1.dart';
 import 'package:provider_demo/tab2.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider.value(value: CounterModel(),),
+    ],
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -56,9 +65,7 @@ class _MyHomePageState extends State<MyHomePage>
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    Provider.of<CounterModel>(context, listen: false).add();
   }
 
   @override

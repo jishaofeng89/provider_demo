@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_demo/provider/counter_model.dart';
 
 class Tab2 extends StatefulWidget {
   Tab2({Key key}) : super(key: key);
@@ -18,7 +20,7 @@ class _Tab2State extends State<Tab2> with AutomaticKeepAliveClientMixin{
   Widget build(BuildContext context) {
     return Container(
        child: Center(
-         child: Text(_counter2.toString()),
+         child: Text('${Provider.of<CounterModel>(context).value}'),
        ),
     );
   }
