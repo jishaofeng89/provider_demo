@@ -18,10 +18,12 @@ class _Tab2State extends State<Tab2> with AutomaticKeepAliveClientMixin{
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: Center(
-         child: Text('${Provider.of<CounterModel>(context).value}'),
-       ),
+    return Consumer<CounterModel>(
+      builder: (BuildContext context, CounterModel counter, Widget child) {
+        return Center(
+          child: Text(counter.value.toString()),
+        );
+      },
     );
   }
 }
